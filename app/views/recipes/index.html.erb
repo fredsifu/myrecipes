@@ -1,15 +1,21 @@
 <%= render 'shared/page_title', title: 'All Recipes' %>
 
+<% if logged_in? %>
 <p><%= link_to "Create New Recipe", new_recipe_path(@recipe), class: "btn btn-success" %></p>
+<% end %>
 
-<%= will_paginate %>
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4 center">
+    <%= will_paginate %>
+  </div>
+</div>
 
 <% @recipes.each do |recipe| %>
   <div class="row">
     <div class="col-sm-2">
       <section class="chef_info center">
-        <%= gravatar_for recipe.chef, size: 100 %>
-        <h5>Chef: <%= recipe.chef.name %></h5>
+        <%= link_to gravatar_for(recipe.chef, size: 100), chef_path(recipe.chef) %>
+        <h5>Chef: <%= link_to recipe.chef.name, chef_path(recipe.chef) %></h5>
       </section>
     </div>
     
@@ -35,4 +41,8 @@
   </div>
 <% end %>
 
-<%= will_paginate %>
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4 center">
+    <%= will_paginate %>
+  </div>
+</div>

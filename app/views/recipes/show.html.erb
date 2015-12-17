@@ -23,14 +23,16 @@
     </div>
   </div>
   <div class="col-sm-4 center">
-    <%= gravatar_for @recipe.chef, size: 150 %>
-    <p>Brought to you by <%= @recipe.chef.name %></p>
+    <%= link_to gravatar_for(@recipe.chef, size: 150), chef_path(@recipe.chef) %>
+    <p>Brought to you by <%= link_to @recipe.chef.name, chef_path(@recipe.chef) %></p>
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm-8">
     <%= link_to 'Return to recipes listing', recipes_path, class: "btn btn-warning" %>
-    | <%= link_to 'Edit', edit_recipe_path(@recipe) %>
+    <% if logged_in? and @recipe.chef == current_user %>
+      | <%= link_to 'Edit', edit_recipe_path(@recipe) %>
+    <% end %>
   </div>
 </div>

@@ -2,9 +2,7 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
       <div id="error_explanation" class="alert alert-danger">
-        <h2><%= pluralize(obj.errors.count, "error") %> prohibited
-            this recipe from being saved:
-        </h2>
+        <h2>Please correct the following <%= pluralize(obj.errors.count, "error") %>:</h2>
         <ul>
           <% obj.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>

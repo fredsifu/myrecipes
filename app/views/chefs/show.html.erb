@@ -1,0 +1,39 @@
+<%= render 'shared/page_title', title: 'Chef: ' + @chef.name %>
+
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4 center">
+    <%= gravatar_for @chef, size: 200 %>
+    <hr />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4 center">
+    <h3><em>Recipes:</em></h3>
+    <%= will_paginate @recipes %>
+  </div>
+</div>
+
+<% @recipes.each do |recipe| %>
+<div class="row">
+  <div class="col-sm-8 well">
+    <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
+    <p><%= recipe.summary %></p>
+    <p><span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at) %> ago, </small></span>
+      <span class="quiet"><small>updated <%= time_ago_in_words(recipe.updated_at) %> ago</small></span></p>
+    <div class="pull-right">
+      <%= link_to like_recipe_path(recipe, like: true), method: :post do %>
+        <i class="glyphicon glyphicon-thumbs-up"></i><% end %> 
+        <%= recipe.thumbs_up_total %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to like_recipe_path(recipe, like: false), method: :post do %>
+        <i class="glyphicon glyphicon-thumbs-down"></i><% end %> 
+        <%= recipe.thumbs_down_total %>
+    </div>
+  </div>
+  
+  <div class="col-sm-4">
+    <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>
+  </div>
+</div>
+<% end %>

@@ -17,10 +17,16 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :chefs do
+  resources :chefs, except: [:new] do
     member do
       post 'like'
     end
   end
+  
+  get '/register', to: 'chefs#new'
+  
+  get '/login', to: 'logins#new'
+  post '/login', to: 'logins#create'
+  get '/logout', to: 'logins#destroy'
   
 end
