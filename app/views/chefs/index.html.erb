@@ -1,11 +1,15 @@
 <%= render 'shared/page_title', title: 'Our chefs' %>
 
+<ul class="nav nav-tabs">
+  <li><%= link_to "Recipes", recipes_path %></li>
+  <li class="active"><%= link_to "Chefs", chefs_path %></li>
+</ul>
+
 <div class="row">
   <div class="col-sm-4 col-sm-offset-4 center">
     <%= will_paginate %>
   </div>
 </div>
-
 
 <% @chefs.each do |chef| %>
   <div class="row">

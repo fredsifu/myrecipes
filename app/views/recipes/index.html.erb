@@ -1,7 +1,17 @@
 <%= render 'shared/page_title', title: 'All Recipes' %>
 
+<ul class="nav nav-tabs">
+  <li class="active"><%= link_to "Recipes", recipes_path %></li>
+  <li><%= link_to "Chefs", chefs_path %></li>
+</ul>
+
 <% if logged_in? %>
-<p><%= link_to "Create New Recipe", new_recipe_path(@recipe), class: "btn btn-success" %></p>
+<div class="row">
+  <div class="col-sm-12">
+    <br />
+    <%= link_to "Create New Recipe", new_recipe_path(@recipe), class: "btn btn-success" %></p>
+  </div>
+</div>
 <% end %>
 
 <div class="row">
