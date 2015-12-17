@@ -1,5 +1,9 @@
 <%= render 'shared/page_title', title: 'All Recipes' %>
+
 <p><%= link_to "Create New Recipe", new_recipe_path(@recipe), class: "btn btn-success" %></p>
+
+<%= will_paginate %>
+
 <% @recipes.each do |recipe| %>
   <div class="row">
     <div class="col-sm-2">
@@ -12,7 +16,17 @@
     <div class="col-sm-6 well">
       <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
       <p><%= recipe.summary %></p>
-      <p><span class="quiet"><small><%= time_ago_in_words(recipe.created_at) %> ago</small></span></p>
+      <p><span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at) %> ago, </small></span>
+        <span class="quiet"><small>updated <%= time_ago_in_words(recipe.updated_at) %> ago</small></span></p>
+      <div class="pull-right">
+        <%= link_to like_recipe_path(recipe, like: true), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-up"></i><% end %> 
+          <%= recipe.thumbs_up_total %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to like_recipe_path(recipe, like: false), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-down"></i><% end %> 
+          <%= recipe.thumbs_down_total %>
+      </div>
     </div>
     
     <div class="col-sm-4">
@@ -20,3 +34,5 @@
     </div>
   </div>
 <% end %>
+
+<%= will_paginate %>
