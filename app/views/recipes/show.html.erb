@@ -9,8 +9,8 @@
     </div>
     
     <div class="well">
-      <% if @recipe.styles.count > 0 %><p><small>Style: <%= render @recipe.styles %></small></p><% end %>
-      <% if @recipe.ingredients.count > 0 %><p><small>Ingredients: <%= render @recipe.ingredients %></small></p><% end %>
+      <% if @recipe.styles.any? %><p><small>Style: <%= render @recipe.styles %></small></p><% end %>
+      <% if @recipe.ingredients.any? %><p><small>Ingredients: <%= render @recipe.ingredients %></small></p><% end %>
       <p>
         <strong>Steps:</strong>
       </p>

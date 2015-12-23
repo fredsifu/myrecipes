@@ -32,8 +32,8 @@
     <div class="col-sm-6 well">
       <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
       <p><%= recipe.summary %></p>
-      <% if recipe.styles.count > 0 %><p><small>Style: <%= render recipe.styles %></small></p><% end %>
-      <% if recipe.ingredients.count > 0 %><p><small>Ingredients: <%= render recipe.ingredients %></small></p><% end %>
+      <% if recipe.styles.any? %><p><small>Style: <%= render recipe.styles %></small></p><% end %>
+      <% if recipe.ingredients.any? %><p><small>Ingredients: <%= render recipe.ingredients %></small></p><% end %>
       <p><span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at) %> ago, </small></span>
         <span class="quiet"><small>updated <%= time_ago_in_words(recipe.updated_at) %> ago</small></span></p>
       <div class="pull-right">
