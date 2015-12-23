@@ -11,11 +11,13 @@ Rails.application.routes.draw do
   #delete "/recipes/:id", to: "recipes#destroy"
   
   # rails generate the generic form described earlier
-  resources :recipes do
+  resources :recipes, except: [:destroy] do
     member do
       post 'like'
     end
   end
+  
+  delete '/recipes/:id', to: 'recipes#destroy'
   
   resources :chefs, except: [:new] do
     member do
