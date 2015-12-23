@@ -1,0 +1,17 @@
+<%= render 'shared/page_title', title: 'New Ingredient' %>
+
+<%= render "shared/errors", obj: @ingredient %>
+
+<div class="row">
+  <div class="well col-sm-8 col-sm-offset-2">
+    <%= form_for @ingredient do |f| %>
+      <p>
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.submit "Create Ingredient", class: "btn btn-success" %>
+      </p>
+    <% end %>
+  </div>
+</div>

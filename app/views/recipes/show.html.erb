@@ -3,10 +3,14 @@
 <div class="row">
   <div class="col-sm-8">
     <h3><%= @recipe.summary %></h3>
+    
     <div class="show_recipe">
       <%= image_tag(@recipe.picture.url, class: "gravatar") if @recipe.picture? %>
     </div>
+    
     <div class="well">
+      <% if @recipe.styles.count > 0 %><p><small>Style: <%= render @recipe.styles %></small></p><% end %>
+      <% if @recipe.ingredients.count > 0 %><p><small>Ingredients: <%= render @recipe.ingredients %></small></p><% end %>
       <p>
         <strong>Steps:</strong>
       </p>
@@ -22,6 +26,7 @@
       </div>
     </div>
   </div>
+  
   <div class="col-sm-4 center">
     <%= link_to gravatar_for(@recipe.chef, size: 150), chef_path(@recipe.chef) %>
     <p>Brought to you by <%= link_to @recipe.chef.name, chef_path(@recipe.chef) %></p>

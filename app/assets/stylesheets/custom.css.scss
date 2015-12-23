@@ -34,6 +34,18 @@ body {
   margin-top: 20px;
 }
 
+.nav_ul_item {
+  padding-left: 25px;
+  float: left;
+  margin-top: 20px;
+  display: inline-block;
+  list-style-type: none;
+}
+
+.nav_item_right {
+  float: right;
+}
+
 .center {
   text-align: center;
 }
@@ -100,4 +112,18 @@ span.picture {
 
 .show_recipe {
   margin: 10px 10px 10px 10px;
+}
+
+.ingredient {
+  border-radius: 3px;
+  border: solid 1px grey;
+  background-color: #e5f2ff;
+  padding: 2px;
+}
+
+.style {
+  border-radius: 3px;
+  border: solid 1px grey;
+  background-color: #e5f2ff;
+  padding: 2px;
 }
